@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      background: #050816;
+      color: white;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Animated Background */
+    .background {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(125, 92, 255, 0.35), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(0, 209, 255, 0.25), transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(255, 0, 128, 0.20), transparent 35%),
+        linear-gradient(135deg, #050816 0%, #0b1023 100%);
+      animation: drift 28s ease-in-out infinite alternate;
+      transform: scale(1.2);
+    }
+
+    @keyframes drift {
+      0% {
+        transform: scale(1.2) translate(0px, 0px);
+      }
+      100% {
+        transform: scale(1.25) translate(-20px, -15px);
+      }
+    }
+
+    /* Grain Overlay */
+    .background::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.035;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    /* Animated Dot Grid */
+    .dot-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,0.55) 1.5px,
+          transparent 1.5px
+        );
+
+      background-size: 64px 64px;
+
+      opacity: 0.08;
+
+      animation: gridPulse 10s ease-in-out infinite;
+
+      mask-image: radial-gradient(
+        circle at center,
+        black 20%,
+        transparent 75%
+      );
+
+      -webkit-mask-image: radial-gradient(
+        circle at center,
+        black 20%,
+        transparent 75%
+      );
+    }
+
+    @keyframes gridPulse {
+      0%, 100% {
+        opacity: 0.04;
+      }
+
+      45%, 55% {
+        opacity: 0.16;
+      }
+    }
+
+    /* Main Content */
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 32px 40px;
+      border-radius: 28px;
+
+      background: rgba(255, 255, 255, 0.05);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      display: inline-block;
+      animation: blink 1.8s infinite;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes blink {
+      0%, 20% {
+        opacity: 0.2;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        padding: 24px 28px;
+      }
+
+      h1 {
+        font-size: 14px;
+        letter-spacing: 1.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background"></div>
+
+  <div class="dot-grid"></div>
+
+  <div class="content">
+    <h1>
+      Coming Soon
+      <span class="dot">.</span>
+      <span class="dot">.</span>
+      <span class="dot">.</span>
+    </h1>
+  </div>
+
+</body>
+</html>
